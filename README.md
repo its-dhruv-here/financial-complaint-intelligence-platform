@@ -167,19 +167,4 @@ streamlit run app.py
 ```
 
 ---
-
-## Future Improvements
-
-- **Sentence-BERT embeddings** for richer semantic representations — swap the TF-IDF vectoriser for `all-MiniLM-L6-v2` without changing the classifier.
-- **FastAPI microservice** for REST-based production deployment behind a load balancer.
-- **Automated retraining** — scheduled pipeline re-runs on new CFPB data drops via GitHub Actions.
-
----
-
-## Resume Bullet Points
-
-- Designed and deployed an end-to-end NLP text-classification pipeline processing 1.2 M+ consumer financial complaints, achieving 70.1 % Weighted F1 across 17 imbalanced classes with class-weight balancing and GridSearchCV hyperparameter tuning.
-- Engineered a custom scikit-learn `TransformerMixin` preprocessing module with production-safe type handling (str / list / Series / ndarray), integrated into a serialised inference pipeline with zero train-serve skew.
-- Benchmarked four classifiers (Dummy baseline, Multinomial NB, Logistic Regression, Linear SVM) with `class_weight='balanced'` across five TF-IDF strategies, improving Macro F1 from 46.8 % → 52.8 % on minority classes.
-- Built a dark-themed enterprise Streamlit dashboard with KPI telemetry, keyword-chip explainability (positive + negative coefficients), and an analytics reporting view with benchmark tables and confusion matrices.
 - Implemented CI/CD via GitHub Actions with flake8 linting and import smoke tests, pinned dependencies via `requirements.txt` for reproducible builds.
