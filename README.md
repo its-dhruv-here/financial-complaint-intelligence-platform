@@ -103,13 +103,6 @@ This is visualised interactively using a Plotly horizontal bar chart in the dash
 
 ---
 
-## Screenshots
-
-screenshots/routing.png
-screenshots/analytics.png
-screenshots/benchmarks.png
----
-
 ## Quick Start
 
 ```bash
