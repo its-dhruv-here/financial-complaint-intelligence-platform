@@ -1,0 +1,51 @@
+name: CI — Lint & Smoke Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8
+
+      - name: Lint with flake8
+        run: |
+          # Stop on syntax errors or undefined names
+          flake8 src/ app.py run_training.py --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Warn on complexity / style (non-blocking)
+          flake8 src/ app.py run_training.py --count --max-line-length=120 --statistics --exit-zero
+
+      - name: Smoke test — module imports
+        run: |
+          python -c "from src.data.loader import load_and_split_data; print('loader OK')"
+          python -c "from src.features.preprocessor import TextPreprocessor; print('preprocessor OK')"
+          python -c "from src.models.train import get_model_benchmarks; print('train OK')"
+          python -c "from src.models.evaluate import evaluate_predictions; print('evaluate OK')"
+          python -c "from src.explain.explainer import generate_explainability; print('explainer OK')"
+          echo "All imports passed."
+
+      - name: Smoke test — preprocessor round-trip
+        run: |
+          python -c "
+          from src.features.preprocessor import TextPreprocessor
+          p = TextPreprocessor()
+          out = p.transform(['Hello WORLD!!!', 'Test   123'])
+          assert len(out) == 2, 'Expected 2 outputs'
+          assert out[0] == 'hello world', f'Unexpected: {out[0]}'
+          print('Preprocessor round-trip PASSED')
+          "

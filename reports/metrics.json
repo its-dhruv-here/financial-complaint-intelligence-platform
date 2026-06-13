@@ -1,0 +1,82 @@
+{
+  "best_model": {
+    "Model": "Linear SVM",
+    "Accuracy": 0.7277,
+    "Precision": 0.7419,
+    "Recall": 0.7277,
+    "Macro F1": 0.5591,
+    "Weighted F1": 0.7327
+  },
+  "dataset": {
+    "Original Rows": 383548,
+    "Total Rows": 383548,
+    "Train Samples": 306838,
+    "Test Samples": 76710,
+    "Classes": 17,
+    "Vocabulary Size": 10000,
+    "Avg Complaint Length": 1051,
+    "Top Categories": [
+      "Credit reporting, credit repair services, or other personal consumer reports",
+      "Debt collection",
+      "Mortgage"
+    ]
+  },
+  "benchmarks": [
+    {
+      "Model": "Dummy (Most-Frequent)",
+      "Accuracy": 0.2409,
+      "Precision": 0.058,
+      "Recall": 0.2409,
+      "Macro F1": 0.0228,
+      "Weighted F1": 0.0935,
+      "Train Time (s)": 0.19,
+      "Inference Time (s)": 0.013
+    },
+    {
+      "Model": "Multinomial Naive Bayes",
+      "Accuracy": 0.6934,
+      "Precision": 0.6889,
+      "Recall": 0.6934,
+      "Macro F1": 0.4306,
+      "Weighted F1": 0.6679,
+      "Train Time (s)": 1.4,
+      "Inference Time (s)": 0.121
+    },
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 0.7127,
+      "Precision": 0.7493,
+      "Recall": 0.7127,
+      "Macro F1": 0.5665,
+      "Weighted F1": 0.7227,
+      "Train Time (s)": 155.11,
+      "Inference Time (s)": 0.154
+    },
+    {
+      "Model": "Linear SVM",
+      "Accuracy": 0.7277,
+      "Precision": 0.7419,
+      "Recall": 0.7277,
+      "Macro F1": 0.5591,
+      "Weighted F1": 0.7327,
+      "Train Time (s)": 272.82,
+      "Inference Time (s)": 0.092
+    }
+  ],
+  "tuning": {
+    "param_grid": {
+      "C": [
+        0.01,
+        0.1,
+        0.5,
+        1.0,
+        5.0,
+        10.0
+      ]
+    },
+    "best_C": 5.0,
+    "cv_weighted_f1": 0.7176,
+    "test_weighted_f1_before": 0.7327,
+    "test_weighted_f1_after": 0.7243
+  }
+}
