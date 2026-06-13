@@ -105,14 +105,9 @@ This is visualised interactively using a Plotly horizontal bar chart in the dash
 
 ## Screenshots
 
-> Run the application and capture screenshots as described in `screenshots/INSTRUCTIONS.md`.
-
-| View | Path |
-|---|---|
-| Routing Dashboard | `screenshots/routing.png` |
-| Model Analytics | `screenshots/analytics.png` |
-| Benchmark Comparison | `screenshots/benchmarks.png` |
-
+screenshots/routing.png
+screenshots/analytics.png
+screenshots/benchmarks.png
 ---
 
 ## Quick Start
